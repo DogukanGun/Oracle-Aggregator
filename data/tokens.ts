@@ -1,0 +1,54 @@
+type Token = {
+    name:string
+    logo:string
+    id:string
+}
+
+export const tokens: Token[] = [
+    {
+        name:"AAVE",
+        logo:"aave-logo.png",
+        id:"0x2b9ab1e972a281585084148ba1389800799bd4be63b957507db1349314e47445"
+    },
+    {
+        name:"ADA",
+        logo:"ada-logo.png",
+        id:"0x2a01deaec9e51a579277b34b122399984d0bbf57e2458a7e42fecd2829867a0d"
+    },
+    {
+        name:"AVAX",
+        logo:"avax-logo.png",
+        id:"0x93da3352f9f1d105fdfe4971cfa80e9dd777bfc5d0f683ebb6e1294b92137bb7"
+    },
+    {
+        name:"AXL",
+        logo:"",
+        id:"0x60144b1d5c9e9851732ad1d9760e3485ef80be39b984f6bf60f82b28a2b7f126"
+    },
+    {
+        name:"BTC",
+        logo:"btc-logo.png",
+        id:"0xe62df6c8b4a85fe1a67db44dc12de5db330f7ac66b72dc658afedf0f4a415b43"
+    },
+    {
+        name:"CHZ",
+        logo:"",
+        id:"0xe799f456b358a2534aa1b45141d454ac04b444ed23b1440b778549bb758f2b5c"
+    },
+    {
+        name:"DOGE",
+        logo:"doge-logo.png",
+        id:"0xdcef50dd0a4cd2dcc17e45df1676dcb336a11a61c69df7a0299b0150c672d25c"
+    },
+    {
+        name:"MATIC",
+        logo:"matic-logo.png",
+        id:"0x5de33a9112c2b700b8d30b8a3402c103578ccfa2765696471cc672bd5cf6ac52"
+    },
+    {
+        name:"WLD",
+        logo:"wld-logo.png",
+        id:"0xd6835ad1f773de4a378115eb6824bd0c0e42d84d1c84d9750e853fb6b6c7794a"
+    }
+]
+

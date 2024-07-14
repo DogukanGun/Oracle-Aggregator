@@ -1,4 +1,4 @@
-const KEY_BASE = 'ALTERSCOPE';
+const KEY_BASE = 'NEXARB';
 
 /** Service that provides a basis for local storage */
 abstract class StorageService {

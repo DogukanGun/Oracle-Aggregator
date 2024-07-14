@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
 import store from '@/store';
-import { MetricsMetadataType } from '@/types/Response';
 import { snakeToCamelInterceptor } from '@/interceptors';
 
 axios.interceptors.response.use(snakeToCamelInterceptor);
@@ -8,7 +7,6 @@ axios.interceptors.response.use(snakeToCamelInterceptor);
 /** Type of the response */
 type ResponseType<T> = AxiosResponse<{
   data: T;
-  metadata?: MetricsMetadataType;
 }>;
 
 /** Method maps for types of requests */

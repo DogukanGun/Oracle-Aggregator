@@ -1,6 +1,6 @@
 import { NavRouteType } from '@/types/Route';
 import {
-  faFolders,
+  faFolders, faShoppingBag,
 } from '@fortawesome/pro-regular-svg-icons';
 
 /** Contains a list of pages for routing. Object structure based on the file structure of app/pages dir.
@@ -54,6 +54,13 @@ const navRoutes: NavRouteType[] = [
     label: 'Oracles',
     path: '/projects',
   },
+  {
+    id: 'projects',
+    icon: faShoppingBag,
+    isEnabled:true,
+    label: 'Marketplace',
+    path: '/marketplace'
+  }
   
 ];
 

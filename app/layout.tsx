@@ -5,8 +5,8 @@ import Layout from '@/components/Layout';
 import 'react-circular-progressbar/dist/styles.css';
 
 export const metadata: Metadata = {
-  title: 'ALTERSCOPE',
-  description: 'ALTERSCOPE',
+  title: 'Nexarb',
+  description: 'NexGen Price Feed',
 };
 
 export default function RootLayout({

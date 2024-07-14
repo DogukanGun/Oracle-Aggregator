@@ -64,7 +64,7 @@ function Container({ children }: Readonly<HTMLProps<HTMLDivElement>>) {
   const Component = useMemo(() => {
     const isAuth = pathname?.startsWith('/auth');
     const isProjects = pathname?.startsWith('/projects');
-    const isFramework = pathname?.startsWith('/frameworks');
+    const isFramework = pathname?.startsWith('/marketplace');
     const isRoot = pathname === '/';
     if (loading === false) {
       // Redirect to auth if not authorized
