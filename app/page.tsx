@@ -7,10 +7,11 @@ import Typography from "@/components/Typography";
 import useHomePage from "@/hooks/useHomePage";
 import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import Image from 'next/image';
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const { homePageData } = useHomePage()
-  
+  const router = useRouter()
   return (
     <Stack spacing={10} className="mt-4">
       <Typography variant="header1" text="Tokens" />
@@ -60,7 +61,7 @@ export default function Home() {
           {
             title: "",
             cell(props) {
-              return <Icon onClick={() => console.log()} icon={faArrowRight} />
+              return <Icon onClick={() => router.push('/token/'+props.row.pythPrice.token)} icon={faArrowRight} />
             },
 
           }

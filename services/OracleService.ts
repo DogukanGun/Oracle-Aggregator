@@ -1,5 +1,6 @@
 import { PriceData } from "redstone-api/lib/types";
 import ApiService from "./ApiService";
+import { SummaryResponse } from "@/pages/api/redstone/helper";
 
 type PythPriceResponse = {
     conf: string;
@@ -11,6 +12,11 @@ type PythPriceResponse = {
 type PythResponse = {
     id: string;
     price: PythPriceResponse;
+}
+
+export type OracleRes = {
+    provider:string
+    price:string
 }
 
 export const formatPrice = (price: string, expo: number) => {
@@ -49,10 +55,37 @@ class OracleService extends ApiService {
     getLast5Price = async (token: string) => {
         const res = await this.post("api/redstone/historical", {
             token: token,
-            limit:5
+            limit: 5
         })
-        const tranformed = Object.values(res.data).map(price=>price)
+        const tranformed = Object.values(res.data).map(price => price)
         return tranformed as PriceData[]
+    }
+
+    getSummary = async (token: string) => {
+        const currentDate = new Date();
+        const yesterdayDate = new Date(currentDate);
+        yesterdayDate.setDate(yesterdayDate.getDate() - 1);
+
+        const startDate = currentDate.toISOString();
+        const endDate = yesterdayDate.toISOString();
+        const res = await this.post('api/redstone/summary', {
+            token:token,
+            startDate:"2024-07-12T12:35:09",
+            endDate:"2024-07-13T12:35:09",
+            limit:10
+        })
+        return res.data as unknown as SummaryResponse
+    }
+
+    getPrices =async (token:string) => {
+        const res = await this.post('api/redstone/price',{
+            token:token
+        })
+        const priceRes = res.data as unknown as PriceData
+        const formattedSource = Object.entries(priceRes.source!).map(([provider, price]) => {
+            return { provider, price: price.toString() } as OracleRes;
+        });
+        return formattedSource
     }
 }
 
