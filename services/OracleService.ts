@@ -24,16 +24,14 @@ const formatPrice = (price: string, expo: number) => {
 class OracleService extends ApiService {
 
     constructor() {
-        const host = process.env.HOST ?? 'localhost'
-        const ssl = Boolean(process.env.SSL ?? false)
-        const ep = undefined
-        const port = Number(process.env.PORT ?? '3000')
+        const host = process.env.HOST ?? 'oracle.dogukangun.de'
+        const ssl = Boolean(process.env.SSL ?? true)
         const disableAuth = Boolean(process.env.DISABLE_AUTH ?? true)
-        super({ host, ssl, port, ep, disableAuth });
+        super({ host, ssl, disableAuth });
     }
 
     getPrice = async (priceIds: string[]): Promise<PythResponse[]> => {
-        const res = await this.post("/api/pyth/price", {
+        const res = await this.post("api/pyth/price", {
             priceIds: priceIds
         })
         const priceValues = Object.values(res.data).map(priceObj => {
@@ -49,7 +47,7 @@ class OracleService extends ApiService {
     }
 
     getLast5Price = async (token: string) => {
-        const res = await this.post("/api/redstone/historical", {
+        const res = await this.post("api/redstone/historical", {
             token: token,
             limit:5
         })
