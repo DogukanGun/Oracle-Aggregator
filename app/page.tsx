@@ -5,10 +5,8 @@ import Icon from "@/components/Icon";
 import Stack from "@/components/Stack";
 import Typography from "@/components/Typography";
 import useHomePage from "@/hooks/useHomePage";
-import { usePyth } from "@/hooks/usePyth";
 import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import Image from 'next/image';
-import { useMemo } from "react";
 
 export default function Home() {
   const { homePageData } = useHomePage()

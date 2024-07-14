@@ -13,7 +13,7 @@ type PythResponse = {
     price: PythPriceResponse;
 }
 
-const formatPrice = (price: string, expo: number) => {
+export const formatPrice = (price: string, expo: number) => {
     // Move the decimal point by `expo` positions to the left
     const num = Number(price) * Math.pow(10, expo);
     // Format the number to include a comma for thousands and a dot for decimal separation

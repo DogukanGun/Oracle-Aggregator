@@ -1,7 +1,9 @@
 import { NavRouteType } from '@/types/Route';
 import {
+  faDollar,
   faFolders, faShoppingBag,
 } from '@fortawesome/pro-regular-svg-icons';
+import { faTrademark } from '@fortawesome/pro-solid-svg-icons';
 
 /** Contains a list of pages for routing. Object structure based on the file structure of app/pages dir.
  * A route (except root) should use self to refer to its own data and its children should be keyed objects.
@@ -55,7 +57,14 @@ const navRoutes: NavRouteType[] = [
     path: '/',
   },
   {
-    id: 'projects',
+    id: 'trade',
+    icon: faDollar,
+    isEnabled: true,
+    label: 'Trade View',
+    path: '/trade',
+  },
+  {
+    id: 'marketplace',
     icon: faShoppingBag,
     isEnabled:true,
     label: 'Marketplace',

@@ -64,12 +64,13 @@ function Container({ children }: Readonly<HTMLProps<HTMLDivElement>>) {
   const Component = useMemo(() => {
     const isAuth = pathname?.startsWith('/auth');
     const isProjects = pathname?.startsWith('/projects');
+    const isTrade = pathname?.startsWith('/trade');
     const isFramework = pathname?.startsWith('/marketplace');
     const isRoot = pathname === '/';
     if (loading === false) {
       // Redirect to auth if not authorized
       if (!auth.session?.accessToken && !isAuth)
-        if (!(isProjects || isRoot || isFramework))
+        if (!(isProjects || isRoot || isFramework || isTrade))
           router.replace(appRoutes.auth.login.self.path);
       // Redirect to app if authorizated and in auth flow
       if (auth.session?.accessToken && isAuth)
