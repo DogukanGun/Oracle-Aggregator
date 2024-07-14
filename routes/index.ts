@@ -52,7 +52,7 @@ const navRoutes: NavRouteType[] = [
     icon: faFolders,
     isEnabled: true,
     label: 'Oracles',
-    path: '/projects',
+    path: '/',
   },
   {
     id: 'projects',

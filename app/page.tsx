@@ -1,47 +1,70 @@
 "use client"
-import Button from "@/components/Button";
+import AreaChart from "@/components/AreaChart/AreaChart";
 import DataTable from "@/components/DataTable";
+import Icon from "@/components/Icon";
 import Stack from "@/components/Stack";
 import Typography from "@/components/Typography";
+import useHomePage from "@/hooks/useHomePage";
 import { usePyth } from "@/hooks/usePyth";
+import { faArrowRight } from "@fortawesome/pro-solid-svg-icons";
 import Image from 'next/image';
+import { useMemo } from "react";
 
 export default function Home() {
-  const {prices} = usePyth()
-
+  const { homePageData } = useHomePage()
+  
   return (
     <Stack spacing={10} className="mt-4">
-      <Typography variant="header1" text="Tokens"/>
+      <Typography variant="header1" text="Tokens" />
       <DataTable
-      rounded
-        data={prices}
+        rounded
+        data={homePageData}
         cols={[
           {
-            key:'logo',
-            title:'',
+            key: "pythPrice",
+            title: "Symbol",
             cell(props) {
-              return <Image alt={props.row.token} width={50} height={50} src={"/"+props.row.logo}/>
+              return (
+                <Stack className="items-center" isRow spacing={5}>
+                  <Image alt={props.row.pythPrice.logo} width={50} height={50} src={"/" + props.row.pythPrice.logo} />
+                  <Typography variant="body1" text={props.row.pythPrice.token} />
+                </Stack>
+              )
             },
           },
           {
-            key:"token",
-            title:"Symbol",
+            key: "pythPrice",
+            title: "Price",
             cell(props) {
-              return <Typography variant="body1" text={props.row.token}/>
+              return <Typography weight="bold" variant="body1" text={props.row.pythPrice.price} />
             },
           },
           {
-            key:"price",
-            title:"Price",
+            key: "pythPrice",
+            title: "Price",
             cell(props) {
-              return <Typography variant="body1" text={props.row.price}/>
+              const series = [
+                  {
+                    name: 'Price',
+                    values: props.row.priceHistory?.map((price)=>price.value) ?? [],
+                  },
+                ]
+              return <AreaChart
+              containerProps={{ style: { height: 50 } }}
+              timestamps={props.row.priceHistory?.map((_,index:number)=>index) ?? []}
+              data={series}
+              xAxisHidden
+              yAxisHidden
+            />
             },
+            cellStyle: () => 'w-60',
           },
           {
-            title:"",
+            title: "",
             cell(props) {
-              return <Button onClick={()=>console.log("")} text="See Details"/>
+              return <Icon onClick={() => console.log()} icon={faArrowRight} />
             },
+
           }
         ]}
       />
